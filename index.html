@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafiz Zohaib Hassan - Data Scientist CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.1em;
+            color: #3498db;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 3px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .skill-category p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .experience-item, .project-item, .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover, .project-item:hover, .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .item-date {
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .item-subtitle {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .item-description li {
+            margin-bottom: 5px;
+        }
+
+        .tools {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #e74c3c;
+        }
+
+        .certifications-list {
+            list-style: none;
+        }
+
+        .certifications-list li {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+            transition: transform 0.3s ease;
+        }
+
+        .certifications-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .certifications-list li::before {
+            content: '🏆';
+            margin-right: 10px;
+        }
+
+        .soft-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .soft-skill {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .soft-skill:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .soft-skill i {
+            font-size: 2em;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .achievement {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .cv-container {
+                margin: 10px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .header::before {
+                display: none;
+            }
+
+            .github-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 8px 16px;
+                background-color: #24292e;
+                color: white;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .github-btn i {
+                margin-right: 8px;
+                font-size: 1.1em;
+            }
+
+            .github-btn:hover {
+                background-color: #2d3338;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+
+            .github-btn:active {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Hafiz Zohaib Hassan</h1>
+                <p class="title">Data Scientist</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Gujranwala, Pakistan</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+923091860369</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>h.zohaibhassan00@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/Zohaib Hassan</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Key Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <p>Python, SQL, Java, C++</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>ML Tools</h4>
+                            <p>Scikit-learn, TensorFlow, PyTorch</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Visualization</h4>
+                            <p>Matplotlib, Seaborn, Power BI</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frameworks</h4>
+                            <p>Pandas, NumPy, Keras, OpenCV</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Big Data</h4>
+                            <p>Spark, Hadoop</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <ul class="certifications-list">
+                        <li>Self-Learning in Data Science (Coursera)</li>
+                        <li>Machine Learning with Python (Coursera)</li>
+                        <li>Deep Learning Fundamentals (Coursera)</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Soft Skills</h2>
+                    <div class="soft-skills">
+                        <div class="soft-skill">
+                            <i class="fas fa-users"></i>
+                            <p>Leadership</p>
+                        </div>
+                        <div class="soft-skill">
+                            <i class="fas fa-comments"></i>
+                            <p>Communication</p>
+                        </div>
+                        <div class="soft-skill">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Problem-Solving</p>
+                        </div>
+                        <div class="soft-skill">
+                            <i class="fas fa-handshake"></i>
+                            <p>Teamwork</p>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p>I am Data Scientist with 1.5 years of experience in freelancing, specializing in machine learning, deep learning, and computer vision. Proficient in big data tools and data visualization using Power BI and Python. Seeking to solve complex data challenges and build scalable AI solutions.</p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Freelance Data Scientist</h3>
+                                <p class="item-subtitle">Self-Employed</p>
+                            </div>
+                            <span class="item-date">Feb 2023 – Present</span>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Developed machine learning and deep learning projects, including predictive modeling and image classification</li>
+                                <li>Created Fiverr gigs on machine learning modeling, achieving positive client feedback</li>
+                                <li>Collaborated with clients to tailor solutions, enhancing satisfaction</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Seeking Data Science Opportunities</h3>
+                                <p class="item-subtitle">Career Objective</p>
+                            </div>
+                            <span class="item-date">Current</span>
+                        </div>
+                        <div class="item-description">
+                            <p>I am seeking a data science job where I can leverage my skills in machine learning, deep learning, computer vision, data analysis, and visualization. I am eager to contribute to real-world projects that solve complex problems and make data-driven decisions.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="project-item">
+                        <h3 class="item-title">Virtual Try-On System (OOTDiffusion Implementation)</h3>
+                        <p class="tools">Tools: Python, PyTorch, Diffusers, OpenCV, Transformers</p>
+                        <p class="item-description">
+                            Implemented OOTDiffusion-based virtual try-on system for high-resolution garment transfer with realistic texture preservation.
+                        </p>
+                        <div class="github-btn-container" style="margin-top: 15px;">
+                                <a href="https://github.com/zohaibhassan00/virtualtryon" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background: linear-gradient(135deg, #24292e 0%, #2d3338 100%); color: white; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.95em; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 15px rgba(36, 41, 46, 0.3); border: 2px solid transparent; position: relative; overflow: hidden; letter-spacing: 0.5px; cursor: pointer;" onmouseover="this.style.background='linear-gradient(135deg, #2d3338 0%, #24292e 100%)'; this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 8px 25px rgba(36, 41, 46, 0.4)'; this.style.borderColor='rgba(255,255,255,0.2)'; this.querySelector('i').style.transform='rotate(360deg)'" onmouseout="this.style.background='linear-gradient(135deg, #24292e 0%, #2d3338 100%)'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(36, 41, 46, 0.3)'; this.style.borderColor='transparent'; this.querySelector('i').style.transform='rotate(0deg)'" onclick="this.style.transform='translateY(-1px) scale(0.98)'">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="project-item">
+                        <h3 class="item-title">Facial Expression Detection</h3>
+                        <p class="tools">Tools: Python, OpenCV, TensorFlow, CNN, FER2013 Dataset</p>
+                        <p class="item-description">Developed real-time facial expression recognition system using CNN architecture achieving 85% accuracy on 7 emotion classes.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://github.com/zohaibhassan00/Facial-Expression-Detection" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background: linear-gradient(135deg, #24292e 0%, #2d3338 100%); color: white; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.95em; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 15px rgba(36, 41, 46, 0.3); border: 2px solid transparent; position: relative; overflow: hidden; letter-spacing: 0.5px; cursor: pointer;" onmouseover="this.style.background='linear-gradient(135deg, #2d3338 0%, #24292e 100%)'; this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 8px 25px rgba(36, 41, 46, 0.4)'; this.style.borderColor='rgba(255,255,255,0.2)'; this.querySelector('i').style.transform='rotate(360deg)'" onmouseout="this.style.background='linear-gradient(135deg, #24292e 0%, #2d3338 100%)'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(36, 41, 46, 0.3)'; this.style.borderColor='transparent'; this.querySelector('i').style.transform='rotate(0deg)'" onclick="this.style.transform='translateY(-1px) scale(0.98)'">
+                                <i class="fab fa-github" style="margin-right: 10px; font-size: 1.2em; transition: transform 0.3s ease;"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">B.Sc. in Data Science</h3>
+                                <p class="item-subtitle">GIFT University</p>
+                            </div>
+                            <span class="item-date">Expected Aug 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Intermediate in Computer Science (ICS)</h3>
+                                <p class="item-subtitle">GIFT College</p>
+                            </div>
+                            <span class="item-date">Completed 2021</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Matriculation</h3>
+                                <p class="item-subtitle">Seerat High School</p>
+                            </div>
+                            <span class="item-date">Completed 2019</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Achievements</h2>
+                    <div class="achievement">
+                        🏆 Achieved 98%+ accuracy in cervical cancer detection, praised by faculty and set for publication
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="Print CV">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.experience-item, .project-item, .education-item, .skill-category, .soft-skill');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Add typing effect to the name
+            const nameElement = document.querySelector('.name');
+            const originalText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 500);
+
+            // Add progress bars for skills (visual enhancement)
+            const skillCategories = document.querySelectorAll('.skill-category');
+            skillCategories.forEach((skill, index) => {
+                setTimeout(() => {
+                    skill.style.opacity = '0';
+                    skill.style.transform = 'translateX(-20px)';
+                    skill.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        skill.style.opacity = '1';
+                        skill.style.transform = 'translateX(0)';
+                    }, 100);
+                }, index * 100);
+            });
+
+            // Add contact info click functionality
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = this.querySelector('span').textContent;
+                    if (text.includes('@')) {
+                        window.open(`mailto:${text}`);
+                    } else if (text.includes('+')) {
+                        window.open(`tel:${text}`);
+                    } else if (text.includes('linkedin')) {
+                        window.open(`https://${text}`, '_blank');
+                    }
+                });
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
